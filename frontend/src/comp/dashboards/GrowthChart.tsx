@@ -25,7 +25,7 @@ ChartJS.register(
 interface ChartProps {
     selectedInterval: string;
   }
-  
+const baseURL='http://localhost:8080/api/chart'
 
 const GrowthChart:React.FC<ChartProps> = ({ selectedInterval }) => {
     console.log(selectedInterval)
@@ -41,7 +41,7 @@ const GrowthChart:React.FC<ChartProps> = ({ selectedInterval }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/chart?interval=${selectedInterval}`
+          `${baseURL}?interval=${selectedInterval}`
         ); // Adjust the API endpoint and query parameters
         const data = await response.json();
         setChartData(data.data);
@@ -86,12 +86,12 @@ const GrowthChart:React.FC<ChartProps> = ({ selectedInterval }) => {
     },
     elements: {
       line: {
-        tension: 0, // Adjust the line tension for the dashed effect
+        tension: 0, 
       },
     },
     spanGaps: true,
     legend: {
-      display: false, // Set display to false to remove the legend
+      display: false, 
     },
   };
 
@@ -104,10 +104,9 @@ const GrowthChart:React.FC<ChartProps> = ({ selectedInterval }) => {
         borderColor: "rgb(60, 179, 113)",
         borderWidth: 1,
         fill: true,
-        backgroundColor: 'rgba(75,192,192,0.3)', // Set the gradient color
+        backgroundColor: 'rgba(75,192,192,0.3)',
         borderDash: [2, 2],
         pointRadius: 0,
-        // borderJoinStyle: 'miter' | 'sdfsd'
       },
     ],
   };

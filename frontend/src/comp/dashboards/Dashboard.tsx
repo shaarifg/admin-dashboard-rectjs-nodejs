@@ -64,7 +64,7 @@ const Dashboard = () => {
             </div>
             {CustomersData?.map((custoter, index) => {
               return (
-                <div className="flex flex-col items-baseline ">
+                <div className="flex flex-col items-baseline " key={index}>
                   <div
                     className={`flex justify-between w-full ${
                       isActive == custoter.isActive ? "bg-orange-50" : ""
@@ -116,7 +116,7 @@ const Dashboard = () => {
                   value={selectedInterval}
                   onChange={(e) => setSelectedInterval(e.target.value)}
                 >
-                  <option value="yearly" selected>
+                  <option value="yearly" >
                     Yearly
                   </option>
                   <option value="monthly">Monthly</option>
@@ -182,6 +182,7 @@ const Dashboard = () => {
                   className={`relative w-12 h-12 p-3 rounded-2xl ${
                     customer.newChat ? "bg-orange-50" : ""
                   }`}
+                  key={index}
                 >
                   <img
                     src={customer.image}
@@ -201,7 +202,7 @@ const Dashboard = () => {
               return (
                 <div
                   className={`flex justify-between  bg-gradient-to-r from-orange-300 to-orange-100 p-1 px-2 rounded-md`}
-                  style={{ width: `${state.width}%` }}
+                  style={{ width: `${state.width}%` }} key={index}
                 >
                   <p className="font-bold">{state.code} </p>
                   <p>{state.value}</p>
